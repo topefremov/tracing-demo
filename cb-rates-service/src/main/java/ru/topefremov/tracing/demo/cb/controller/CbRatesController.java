@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 @Slf4j
 public class CbRatesController {
-    private final CbRatesService cbRatesService;;
+    private final CbRatesService cbRatesService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     String getRates(@RequestParam("date") LocalDate date) {
