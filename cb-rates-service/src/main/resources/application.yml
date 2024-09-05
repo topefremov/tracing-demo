@@ -1,0 +1,21 @@
+cb-rates-provider-url-template: http://localhost:8081/api/cb-rates?date={date}
+cb-rates-topic: cb-rates
+spring:
+  application:
+    name: cb-rates-service
+  kafka:
+    bootstrap-servers: localhost:9092
+otel:
+  logs:
+    exporter: none
+  metrics:
+    exporter: none
+  exporter:
+    otlp:
+      endpoint: http://localhost:4318
+  resource:
+    attributes:
+      deployment.environment: local
+      service:
+        name: ${spring.application.name}
+        namespace: tracing-demo

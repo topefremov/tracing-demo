@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: cb-rates-provider-service
+
+server:
+  port: 8081
+
+otel:
+  logs:
+    exporter: none
+  metrics:
+    exporter: none
+  exporter:
+    otlp:
+      endpoint: http://localhost:4318
+      protocol: http/protobuf
+  resource:
+    attributes:
+      deployment.environment: local
+      service:
+        name: ${spring.application.name}
+        namespace: tracing-demo
