@@ -1,4 +1,18 @@
 services:
+  cb-rates-service:
+    image: cb-rates-service:1.0-SNAPSHOT
+    ports:
+      - 8080:8080
+    environment:
+      - CB-RATES-PROVIDER-URL-TEMPLATE=http://cb-rates-provider-service:8081/api/cb-rates?date={date}
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9094
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4318
+  cb-rates-provider-service:
+    image: cb-rates-provider-service:1.0-SNAPSHOT
+    ports:
+      - 8081:8081
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4318
   kafka:
     image: apache/kafka:3.8.0
     ports:
