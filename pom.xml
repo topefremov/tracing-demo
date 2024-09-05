@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>cb-rates-service</module>
+        <module>cb-rates-provider-service</module>
     </modules>
 
 </project>
