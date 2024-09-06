@@ -14,8 +14,8 @@ public class CbRatesProviderService {
         Assert.notNull(date, "date must not be null");
         var template = """
                 {
-                  "id": {id},
-                  "date": {date},
+                  "id": "{id}",
+                  "date": "{date}",
                   "rates": [
                     {
                       "alphaCode": "USD",
