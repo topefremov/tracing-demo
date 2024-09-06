@@ -1,0 +1,38 @@
+cb-rates-topic: cb-rates
+spring:
+  application:
+    name: cb-rates-db-service
+  datasource:
+    url: jdbc:postgresql://localhost:15432/cb_rates
+    username: user
+    password: password
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      auto-offset-reset: latest
+      enable-auto-commit: false
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.value.default.type: ru.topefremov.tracing.demo.cb.db.dto.CbRatesDto
+      group-id: cb-rates-db-service
+    listener:
+      ack-mode: record
+      log-container-config: true
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+otel:
+  logs:
+    exporter: none
+  metrics:
+    exporter: none
+  exporter:
+    otlp:
+      endpoint: http://localhost:4318
+  resource:
+    attributes:
+      deployment.environment: local
+      service:
+        name: ${spring.application.name}
+        namespace: tracing-demo
+server:
+  port: 8082

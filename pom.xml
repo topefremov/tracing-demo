@@ -11,6 +11,7 @@
     <modules>
         <module>cb-rates-service</module>
         <module>cb-rates-provider-service</module>
+        <module>cb-rates-db-service</module>
     </modules>
 
 </project>
