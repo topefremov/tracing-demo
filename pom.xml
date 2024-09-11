@@ -12,6 +12,8 @@
         <module>cb-rates-service</module>
         <module>cb-rates-provider-service</module>
         <module>cb-rates-db-service</module>
+        <module>otel-jaeger-exporter</module>
+        <module>spring-boot-starter-otel-jaeger-exporter</module>
     </modules>
 
 </project>

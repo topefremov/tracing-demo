@@ -6,13 +6,13 @@ services:
     environment:
       CB-RATES-PROVIDER-URL-TEMPLATE: http://cb-rates-provider-service:8081/api/cb-rates?date={date}
       SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9094
-      OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4318
+      OTEL_EXPORTER_JAEGER_HOST: jaeger
   cb-rates-provider-service:
     image: cb-rates-provider-service:1.0-SNAPSHOT
     ports:
       - 8081:8081
     environment:
-      OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4318
+      OTEL_EXP ORTER_JAEGER_HOST: jaeger
   cb-rates-db-service:
     image: cb-rates-db-service:1.0-SNAPSHOT
     ports:
@@ -20,7 +20,7 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db/cb_rates
       SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9094
-      OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4318
+      OTEL_EXPORTER_JAEGER_HOST: jaeger
   kafka:
     image: apache/kafka:3.8.0
     ports:

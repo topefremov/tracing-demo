@@ -25,9 +25,12 @@ otel:
     exporter: none
   metrics:
     exporter: none
+  traces:
+    exporter: jaeger-agent
   exporter:
-    otlp:
-      endpoint: http://localhost:4318
+    jaeger:
+      host: localhost
+      port: 6831
   resource:
     attributes:
       deployment.environment: local
